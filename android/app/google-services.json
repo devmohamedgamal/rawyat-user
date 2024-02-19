@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "520821941226",
+    "project_id": "rwayat-85d14",
+    "storage_bucket": "rwayat-85d14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520821941226:android:027e8062288fae2e24c893",
+        "android_client_info": {
+          "package_name": "com.rawyat4likeyou.rawyat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOBJuBcuzZyqOAlUMcwJR-rFkEzNNkPSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
