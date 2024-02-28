@@ -1,4 +1,4 @@
-package com.rawyat4likeyou.rawyat
+package com.rawyat4likeyou2.rawyat
 
 import io.flutter.embedding.android.FlutterActivity
 

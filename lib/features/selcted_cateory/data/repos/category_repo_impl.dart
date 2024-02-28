@@ -26,30 +26,4 @@ class CategoryRepoImpl implements CategoryRepo {
       return left(e.toString());
     }
   }
-
-
-  @override
-  Future<Either<String, List<QueryDocumentSnapshot<Object?>>>>
-      fetchTopCategory() async {
-    try {
-      List<QueryDocumentSnapshot> topCategorys = [];
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection(keyCollectionTopCategorys)
-          .get();
-      if (querySnapshot.docs.length == 1) {
-        topCategorys.add(querySnapshot.docs[0]);
-      } else {
-        topCategorys.addAll(querySnapshot.docs);
-      }
-      log("${querySnapshot.docs.first['name'].toString()} first doc in topCategorys");
-      return right(topCategorys);
-    } on FirebaseException catch (e) {
-      log("${e.message!} topCategory error from Firebase");
-      return left(e.message!);
-    } catch (e) {
-      log("${e.toString()} topCategory error from else Expceptions");
-      return left(e.toString());
-    }
-  }
-
 }

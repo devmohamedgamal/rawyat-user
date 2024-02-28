@@ -14,11 +14,10 @@ import 'core/utils/app_router.dart';
 import 'core/utils/firebase_api.dart';
 import 'core/utils/observer.dart';
 import 'features/home/data/repos/fetch_novels_repo_impl.dart';
-import 'features/home/presentation/manger/fetch_novels_cubit/fetch_films_cubit.dart';
+import 'features/home/presentation/manger/fetch_novels_cubit/fetch_novels_cubit.dart';
 import 'features/liveView/presentation/manger/cubit/live_cubit.dart';
 import 'features/selcted_cateory/data/repos/category_repo_impl.dart';
 import 'features/selcted_cateory/presentation/manger/fetch_category_cubit/fetch_category_cubit.dart';
-import 'features/selcted_cateory/presentation/manger/fetch_top_category_cubit/fetch_top_category_cubit.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -27,10 +26,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Bloc.observer = MyBlocObserver();
-
-  await FirebaseMessaging.instance.subscribeToTopic('all');
   await FirebaseApi().requestAndGetToken();
-  await FirebaseApi().initNotifications();
   await checkNotificationPermission();
   AppodealFunc.someMehodsBeforeInit();
   AppodealFunc.initAppodeal();
@@ -51,10 +47,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               FetchNovelsCubit(FetchNovelsRepoImpl())..fetchNovels(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              FetchTopCategoryCubit(CategoryRepoImpl())..fetchTopCategory(),
         ),
         BlocProvider(
           create: (context) =>

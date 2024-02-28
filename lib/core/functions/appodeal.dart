@@ -13,7 +13,7 @@ abstract class AppodealFunc {
         ],
         onInitializationFinished: (errors) => {log(errors.toString())});
   }
-
+  
   static void someMehodsBeforeInit() {
     Appodeal.setTesting(true);
     Appodeal.setLogLevel(Appodeal.LogLevelVerbose);
@@ -43,10 +43,12 @@ abstract class AppodealFunc {
     }
   }
 
-  static void callbackRewardedAd({required Function onClosed}) {
+  static void callbackRewardedAd(
+      {required Function onClosed, required onLoadFaild}) {
     Appodeal.setRewardedVideoCallbacks(
         onRewardedVideoLoaded: (isPrecache) => {log('onRewardedVideoLoaded')},
-        onRewardedVideoFailedToLoad: () => {log('RewardedVideo Faild Loaded')},
+        onRewardedVideoFailedToLoad: () =>
+            {log('RewardedVideo Faild Loaded'), onLoadFaild()},
         onRewardedVideoShown: () => {log('RewardedVideo Shown')},
         onRewardedVideoShowFailed: () => {log('RewardedVideo Show Faild')},
         onRewardedVideoFinished: (amount, reward) => {
@@ -58,13 +60,14 @@ abstract class AppodealFunc {
         onRewardedVideoClicked: () => {log('RewardedVideo Clicked')});
   }
 
-  static Future<void> loadRewardedAd({required Function onClosed}) async {
+  static Future<void> loadRewardedAd(
+      {required Function onClosed, required onLoadFaild}) async {
     var isLoaded = await Appodeal.isLoaded(AppodealAdType.RewardedVideo);
     if (isLoaded) {
       var isCanShow = await Appodeal.canShow(AppodealAdType.RewardedVideo);
       if (isCanShow) {
         Appodeal.show(AppodealAdType.RewardedVideo);
-        callbackRewardedAd(onClosed: onClosed);
+        callbackRewardedAd(onClosed: onClosed, onLoadFaild: onLoadFaild);
       }
     } else {
       log('Faild To Load Ad');

@@ -43,7 +43,8 @@ Widget buildPopupDialog(
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 3),
                           child: BookmarkListViweItem(
-                            text: state.bookmarks[index]['text'],
+                            text: state.bookmarks[index]['name'],
+                            number: state.bookmarks[index]['number'],
                             onTap: () {
                               context.pop();
                               context.push(

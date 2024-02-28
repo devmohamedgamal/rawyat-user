@@ -8,12 +8,14 @@ import 'live_repo.dart';
 
 class LiveRepoImpl implements LiveRepo {
   @override
-  Future<Either<String, String>> getLiveUrl() async {
+  Future<Either<String, Map<String, dynamic>>> getLiveUrl() async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection(kSettingsKey).get();
-      log(" url for Live View ${querySnapshot.docs[0]['liveUrl'].toString()}");
-      return right(querySnapshot.docs[0]['liveUrl']);
+      DocumentSnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance
+              .collection(kSettingsKey)
+              .doc('w6LJBUW3OgrDXogApWT7')
+              .get();
+      return right(querySnapshot.data()!);
     } on FirebaseException catch (e) {
       log(e.message!);
       return left(e.message!);
@@ -38,4 +40,6 @@ class LiveRepoImpl implements LiveRepo {
       return left(e.toString());
     }
   }
+
+ 
 }

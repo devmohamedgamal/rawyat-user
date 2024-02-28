@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import '../../../../core/functions/global_var.dart';
 import '../../../../core/functions/helper_func.dart';
+import '../../../../core/functions/launch_url.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/assets_manger.dart';
 import '../../../../core/utils/constants.dart';
@@ -38,10 +39,14 @@ class ItemWidget extends StatelessWidget {
               context: context,
               counter: variableValue,
               closeAd: () {
-                context.push(AppRouter.kNovelDetailsView, extra: {
-                  'novel': novel,
-                  'index': 0,
-                });
+                if (novel?['kind'] == 'صوت') {
+                  customLaunchUrl(context, novel?['description']);
+                } else {
+                  context.push(AppRouter.kNovelDetailsView, extra: {
+                    'novel': novel,
+                    'index': 0,
+                  });
+                }
               },
               incresCounter: () {
                 adsCounterVar.adsCounterMap[novel?['name']] = {
@@ -66,7 +71,7 @@ class ItemWidget extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.r),
                       child: Hero(
-                        tag: novel?['name'] ?? 'لا يوجد اسم',
+                        tag: novel?['addDate'] ?? 'لا يوجد اسم',
                         child: CachedNetworkImage(
                           imageUrl: novel?['image'] ?? kNetworkImageNotFound,
                           placeholder: (context, url) =>

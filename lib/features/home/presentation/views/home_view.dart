@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rwayat/core/functions/login_with_gmail.dart';
 import 'package:rwayat/core/utils/custom_snackbar.dart';
-import 'package:rwayat/features/home/presentation/manger/fetch_novels_cubit/fetch_films_cubit.dart';
+import 'package:rwayat/features/home/presentation/manger/fetch_novels_cubit/fetch_novels_cubit.dart';
 import 'package:rwayat/features/novels_details/presentation/manger/bookmark_cubit/bookmark_cubit.dart';
 import '../../../../core/utils/app_router.dart';
 import '../widgets/build_pop_up.dart';

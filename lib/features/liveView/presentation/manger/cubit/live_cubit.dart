@@ -19,6 +19,7 @@ class LiveCubit extends Cubit<LiveState> {
       emit(LiveSuccess(liveUrl: success));
     });
   }
+
   Future<void> getEmojeAdsCounter() async {
     emit(EmojeAdsCounterLoading());
     var result = await liveRepoImpl.getEmojeAdsCounter();

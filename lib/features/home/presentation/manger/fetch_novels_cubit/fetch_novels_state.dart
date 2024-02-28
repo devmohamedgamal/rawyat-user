@@ -1,4 +1,4 @@
-part of 'fetch_films_cubit.dart';
+part of 'fetch_novels_cubit.dart';
 
 @immutable
 sealed class FetchNovelsState {}
@@ -28,13 +28,6 @@ final class FetchFilterNovelsFailure extends FetchNovelsState {
 final class FetchFilterNovelsLoading extends FetchNovelsState {}
 
 final class FetchFilterNovelsSuccess extends FetchNovelsState {
-  final List films;
-
-  FetchFilterNovelsSuccess({required this.films});
-}
-
-final class FetchCanDownloadSuccess extends FetchNovelsState {
-  final List canDownload;
-
-  FetchCanDownloadSuccess({required this.canDownload});
+  final List novels;
+  FetchFilterNovelsSuccess({required this.novels});
 }

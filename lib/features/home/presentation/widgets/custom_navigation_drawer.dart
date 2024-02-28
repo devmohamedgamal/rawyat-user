@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rwayat/core/utils/assets_manger.dart';
 import 'package:rwayat/features/selcted_cateory/presentation/manger/fetch_category_cubit/fetch_category_cubit.dart';
 import '../../../../core/functions/helper_func.dart';
+import '../../../../core/functions/launch_url.dart';
 import '../../../../core/functions/login_with_gmail.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/custom_error_widget.dart';
 import '../../../../core/utils/custom_loading_indecator.dart';
 import '../../../../core/utils/custom_snackbar.dart';
 import '../../../../core/utils/subtitle_text.dart';
-import '../manger/fetch_novels_cubit/fetch_films_cubit.dart';
+import '../manger/fetch_novels_cubit/fetch_novels_cubit.dart';
 import 'drawer_items.dart';
+import 'social_media_accounts_bootom_sheet.dart';
 
 class CustomNavigationDrawer extends StatelessWidget {
   const CustomNavigationDrawer({super.key});
@@ -106,6 +110,20 @@ class CustomNavigationDrawer extends StatelessWidget {
                           requestTONotification(context);
                         },
                       ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        'مواقع التواصل الاجتماعي',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      leading: const Icon(Icons.person),
+                      tileColor: Colors.transparent,
+                      onTap: () {
+                        socialMediaAccountsBottomSheet(context);
+                      },
                     ),
                     ListTile(
                       title: Text(

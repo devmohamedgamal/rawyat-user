@@ -10,8 +10,7 @@ class BookmarkRepoImpl implements BookmarkRepo {
   Future<Either<String, String>> addBookmark(
       {required String uid,
       required String name,
-      required int number,
-      required String text}) async {
+      required int number}) async {
     try {
       CollectionReference userCollection =
           FirebaseFirestore.instance.collection('users');
@@ -23,11 +22,11 @@ class BookmarkRepoImpl implements BookmarkRepo {
       List bookmarks = (user.data() as Map<String, dynamic>)['bookmarks'];
 
       if (containsMap(
-          bookmarks, {'name': name, 'number': number, 'text': text})) {
-        removeMap(bookmarks, {'name': name, 'number': number, 'text': text});
+          bookmarks, {'name': name, 'number': number})) {
+        removeMap(bookmarks, {'name': name, 'number': number});
         log('remove map from list');
       } else {
-        bookmarks.add({'name': name, 'number': number, 'text': text});
+        bookmarks.add({'name': name, 'number': number});
       }
       await userCollection.doc(uid).update({
         'bookmarks': bookmarks,
@@ -58,4 +57,5 @@ class BookmarkRepoImpl implements BookmarkRepo {
       return left(e.toString());
     }
   }
+  
 }

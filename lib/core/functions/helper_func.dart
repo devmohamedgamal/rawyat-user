@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:rwayat/core/utils/custom_snackbar.dart';
 
 import 'appodeal.dart';
 // import 'dart:ui' as ui;
@@ -139,11 +140,19 @@ void adsCounter({
       desc: 'لقد شاهدت $counter/$adsCounter',
       btnCancelOnPress: () {},
       btnOkOnPress: () {
-        AppodealFunc.loadRewardedAd(onClosed: incresCounter);
+        AppodealFunc.loadRewardedAd(
+            onClosed: incresCounter,
+            onLoadFaild: () {
+              customSnackBar(context, 'لا يوجد اعلانات الان');
+            });
         log(" ok btn => $counter");
       },
     ).show();
   } else {
-    AppodealFunc.loadRewardedAd(onClosed: closeAd);
+    AppodealFunc.loadRewardedAd(
+        onClosed: closeAd,
+        onLoadFaild: () {
+          customSnackBar(context, 'لا يوجد اعلانات الان');
+        });
   }
 }

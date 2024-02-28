@@ -14,7 +14,7 @@ final class LiveFailure extends LiveState {
 }
 
 final class LiveSuccess extends LiveState {
-  final String liveUrl;
+  final Map<String,dynamic> liveUrl;
 
   LiveSuccess({required this.liveUrl});
 }

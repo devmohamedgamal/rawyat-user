@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/custom_error_widget.dart';
 import '../../../../core/utils/custom_loading_indecator.dart';
-import '../manger/fetch_novels_cubit/fetch_films_cubit.dart';
+import '../manger/fetch_novels_cubit/fetch_novels_cubit.dart';
 import 'home_top_category.dart';
 import 'item_widget.dart';
 
@@ -45,6 +45,9 @@ class HomeViewBody extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
               SizedBox(
                 height: 160.h,
                 child: soundNovels.isEmpty
@@ -67,6 +70,23 @@ class HomeViewBody extends StatelessWidget {
                           );
                         },
                       ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 20),
+                child: Text(
+                  'روايات كتابية',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Expanded(
                 child: GridView.builder(

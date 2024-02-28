@@ -23,11 +23,10 @@ class BookmarkCubit extends Cubit<BookmarkState> {
   Future<void> addBookmark(
       {required String uid,
       required String name,
-      required int number,
-      required String text}) async {
+      required int number}) async {
     emit(BookmarkLoading());
     var result = await bookmarkRepoImpl.addBookmark(
-        uid: uid, name: name, number: number, text: text);
+        uid: uid, name: name, number: number);
     result.fold((failure) {
       emit(BookmarkFailure(errMessage: failure));
     }, (success) {});

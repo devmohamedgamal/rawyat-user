@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/utils/app_router.dart';
-import '../manger/fetch_novels_cubit/fetch_films_cubit.dart';
+import '../manger/fetch_novels_cubit/fetch_novels_cubit.dart';
 
 int categoryIndex = 0;
 

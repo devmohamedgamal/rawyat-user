@@ -89,7 +89,6 @@ class _CustomContainerListViewItemState
                                       uid: authentication.user!.uid,
                                       name: widget.name,
                                       number: widget.count,
-                                      text: widget.pherse,
                                     );
                               } else {
                                 setState(() {
@@ -99,7 +98,6 @@ class _CustomContainerListViewItemState
                                       uid: authentication.user!.uid,
                                       name: widget.name,
                                       number: widget.count,
-                                      text: widget.pherse,
                                     );
                               }
                             } else {

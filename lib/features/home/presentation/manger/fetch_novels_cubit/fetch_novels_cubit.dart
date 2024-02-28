@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 
 import '../../../data/repos/fetch_novels_repo_impl.dart';
 
-part 'fetch_films_state.dart';
+part 'fetch_novels_state.dart';
 
 class FetchNovelsCubit extends Cubit<FetchNovelsState> {
   FetchNovelsRepoImpl fetchNovelsRepoImpl;
@@ -27,16 +27,7 @@ class FetchNovelsCubit extends Cubit<FetchNovelsState> {
     result.fold((failure) {
       emit(FetchFilterNovelsFailure(errMessage: failure));
     }, (success) {
-      emit(FetchFilterNovelsSuccess(films: success));
-    });
-  }
-
-  Future<void> fetchCanDownload() async {
-    var result = await fetchNovelsRepoImpl.fetchCanDownload();
-    result.fold((failure) {
-      return;
-    }, (success) {
-      emit(FetchCanDownloadSuccess(canDownload: success));
+      emit(FetchFilterNovelsSuccess(novels: success));
     });
   }
 }
